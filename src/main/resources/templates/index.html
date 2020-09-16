@@ -11,15 +11,13 @@
 
 <h1>All Technical Posts</h1>
 
-<main id="posts">
-    <h2>All Technical Posts</h2>
-    <h3>All Technical Posts</h3>
-    <h4>All Technical Posts</h4>
-    <h5>All Technical Posts</h5>
-    <h3>
-        <span th:text="'Hello, ' + ${message}"></span><br>
-        <span th:text="'Hello, ' + ${Integer}"></span><br>
-    </h3>
+<main id="post1">
+
+        <h2 th:text="${post1.title}"></h2>
+        <i>Posted On: </i> <span th:text="${post1.date}"></span>
+        <div>
+            <p th:text="${post1.body}"></p>
+        </div>
 
 </main>
 
