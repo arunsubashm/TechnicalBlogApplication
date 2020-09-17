@@ -2,6 +2,8 @@ package technicalblog;
 
 import Model.Post;
 import Model.User;
+import technicalblog.UserService;
+import technicalblog.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,8 @@ import java.util.ArrayList;
 public class UserController {
 
     @Autowired
-    private technicalblog.PostService postService;
+    private PostService postService;
+    private UserService userService;
 
     @RequestMapping("users/login")
     public String login() {
@@ -26,9 +29,25 @@ public class UserController {
         return "users/registration";
     }
 
+    @RequestMapping(value = "users/registration", method=RequestMethod.POST)
+    public String registerUser(User user) {
+        return "users/login";
+    }
+
     @RequestMapping(value = "users/login", method= RequestMethod.POST)
     public String loginUser(User user) {
-        return "redirect:/posts";
+        if (user != null) {
+            System.out.println("Valid User" + user.getUsername());
+            return "redirect:/posts";
+            //if (userService.login(user)) {
+             //   return "redirect:/posts";
+            //} else {
+             //   return "users/login";
+            //}
+        } else {
+            System.out.println("Null User");
+            return "users/login";
+        }
     }
 
     @RequestMapping(value = "users/logout", method= RequestMethod.POST)
@@ -40,4 +59,5 @@ public class UserController {
 
         return "index2";
     }
+
 }

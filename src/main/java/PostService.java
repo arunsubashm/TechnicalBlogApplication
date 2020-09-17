@@ -13,6 +13,9 @@ public class PostService {
         System.out.println("*** PostService ***");
     }
 
+    public void createPost (Post newPost){
+    }
+
     public ArrayList <Post> getAllPosts () {
         ArrayList<Post> posts = new ArrayList <>();
 
